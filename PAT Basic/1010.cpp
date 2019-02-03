@@ -46,3 +46,34 @@ int main()
 
   return 0;
 }
+/***
+本题其实还有更简洁的写法，无需使用数组存储，直接判断每一组“系数--指数对”，然后输出即可。要注意的有两点，一个是可以利用while...EOF的方式，判断输入
+是否结束，一个是好多题都涉及到特判，比如此题当求导结果没有非零项时，要输出“0 0”（输入为常数时）
+***/
+#include <stdio.h>
+
+int main()
+{
+  int a[1010] = {0};
+  int k ,k1, e, e1, count = 0;
+  while(scanf("%d%d", &k, &e) != EOF){
+    k1 = e * k;
+    e1 = e - 1;
+    if(k1){
+      count++;
+      if(count == 1){
+        printf("%d %d", k1, e1);
+      }
+      else{
+        printf(" %d %d", k1, e1);
+      }
+    }
+  }
+  if(!count){
+    printf("0 0\n");
+  }
+  else{
+    printf("\n");
+  }
+  return 0;
+}
